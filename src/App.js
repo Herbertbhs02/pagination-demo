@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import {useEffect, useState} from 'react'
 import './App.css';
+import Posts from './Posts';
+import Pagination from './Pagination';
+import axios from 'axios'
 
 function App() {
+ 
+  const [posts, setPosts]= useState([])
+  const [length, setLength] = useState(1)
+  const [pagesize, setPagesize] = useState(10)
+  const [selectedpage, setSelectedpage] = useState(1)
+  const [activebutton, setActivebutton] = useState(1)
+  
+  useEffect(()=>{
+    const getposts = async()=>{
+    const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    setPosts(res.data)
+    setLength(res.data.length)
+    }
+    getposts()
+  },[])
+ const startPosition = (selectedpage-1)*pagesize
+ const endPosition = selectedpage*pagesize
+ const postTorender = posts.slice(startPosition, endPosition)
+
+ const selectednumber = (e)=>{setSelectedpage(e); setActivebutton(e)}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <h1>List below</h1>
+    <Posts posts ={postTorender}/>
+    <Pagination length ={length} pagesize={pagesize} 
+    selectednumber={selectednumber} 
+    activebutton={activebutton}/>
+
     </div>
   );
 }
