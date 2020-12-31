@@ -1,0 +1,15 @@
+  pre_build:
+    commands:
+    - echo installing dependencies...
+    - npm install
+
+  build:
+   commands:
+    - echo build ...   
+    npm build
+
+artifacts:
+  files:
+    - "/**/*"
+    discard-paths:no
+    base-directory: dist
