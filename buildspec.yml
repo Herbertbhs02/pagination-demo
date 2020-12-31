@@ -1,4 +1,6 @@
-  pre_build:
+version: 0.2
+
+pre_build:
     commands:
     - npm install
 
