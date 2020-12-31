@@ -6,10 +6,10 @@
   build:
    commands:
     - echo build ...   
-    npm build
+    npm run build
 
 artifacts:
   files:
     - "/**/*"
-    discard-paths:no
-    base-directory: dist
+    discard-paths: no
+    base-directory: build
