@@ -5,7 +5,7 @@ const Pagination = ({length, pagesize,selectednumber,activebutton}) => {
     
     const numberofpages = Math.ceil(length/pagesize) 
      const pagenumber = []
-    for(let i=1; i<=numberofpages; i++){
+       for(let i=1; i<=numberofpages; i++){
         pagenumber.push(i)
     }
 
