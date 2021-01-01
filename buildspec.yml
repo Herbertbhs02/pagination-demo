@@ -9,9 +9,10 @@ frontend:
         - npm run build
     artifacts:
       files:
-        - '/**/*'
-      discard-paths: no
-      base-directory: build
+        index.html
+        # - '/**/*'
+      # discard-paths: no
+      # base-directory: build
 
 
 
